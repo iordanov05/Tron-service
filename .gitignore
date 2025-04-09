@@ -1,0 +1,20 @@
+# Окружение
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE
+.vscode/
+.idea/
+
+# Секреты
+.env
+
+# Alembic
+alembic/versions/*.py
+
+# Системные
+.DS_Store
+*.log
