@@ -15,10 +15,6 @@ async def test_post_tron_info() -> None:
 
     async with AsyncClient(base_url="http://test", transport=transport) as ac:
         response = await ac.post("/tron", json={"address": test_address})
-    try:
-        print("RESPONSE:", response.json())
-    except Exception:
-        print("RAW:", response.text)
 
     assert response.status_code == 200
     data: dict = response.json()

@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:15
+    container_name: tron_db
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "tron_db"
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: tron_service
+    depends_on:
+      - db
+    environment:
+      # Настройки для подключения к БД внутри Docker
+      DB_HOST: "db"
+      DB_PORT: "5432"
+      DB_USERNAME: "postgres"
+      DB_PASSWORD: "postgres"
+      DB_NAME: "tron_db"
+
+      # Ссылка на реальную (mainnet) сеть Tron:
+      TRON_NODE_URL: "https://api.trongrid.io"
+    ports:
+      - "8080:8080"
+
+volumes:
+  db_data:

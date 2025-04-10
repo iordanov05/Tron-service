@@ -7,4 +7,8 @@ alembic
 python-dotenv
 pydantic
 pytest
+pytest-asyncio
 httpx
+psycopg2-binary
+anyio
+asgi-lifespan
